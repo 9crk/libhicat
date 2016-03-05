@@ -1,0 +1,34 @@
+#SDK:
+	linux
+	file system
+	Hisiv stuff
+	download address: http://pan.baidu.com/s/1c1qOQ6O  verifycode: kspc
+#How to burn the firmware to flash
+	you must have a hicat board with a uboot already burned.
+	then connect the UART0 on the ARM9 Hisiv chip. and then use the command as below[recomendly using Hyper Terminal to finish this]:
+	>>loady 0x82000000
+	then send file on Hyper Terminal with xmodern protocal. choose the uImage file under https://github.com/9crk/libhisiv/opt/
+	>>sf probe 0
+	>>sf erase 0x100000 0x300000
+	>>sf write 0x82000000 0x100000 0x300000
+	>>loady 0x82000000
+	then send the rootfs file to the board.
+	>>sf erase 0x400000 0xC00000
+	>>sf write 0x82000000 0x400000 0x500000
+	>>setenv bootargs 'mem=32M console=ttyAMA0,115200 root=/dev/mtdblock2 rootfstype=jffs2 mtdparts=hi_sfc:1M(boot),3M(kernel),12M(rootfs)'
+setenv bootcmd 'sf probe 0;sf read 0x82000000 0x100000 0x300000;bootm 0x82000000'	
+	then reboot the board or execute 'reset' command.
+#How to use opencv Demo
+	clone this repo
+	then install the compiler
+	compile the apps under 'app' dir with './build.sh'
+	copy the app dir to the board
+	copy the opt/opencvlib dir to the board at /www/mmc/opencv/opencvlib
+	cd app
+	source env.sh
+	execute './capture' to capture an image named 'myImage.jpg'
+	execute './match model.jpg' to find the object model.jpg in the camera.
+	then you can browser the result hi.jpg on http://192.168.1.1/mmc/opencv/app/hi.jpg
+
+
+
