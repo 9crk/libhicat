@@ -1,0 +1,12 @@
+<script>
+function changesrc(){
+    var pic=document.getElementById('change');
+    var img='./hi.jpg?'+new Date;
+    pic.src=img;
+    window.setTimeout(changesrc,1000);
+}
+window.onload=function(){
+    changesrc();
+}
+</script>
+<img src="./hi.jpeg" id="change" />

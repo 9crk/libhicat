@@ -18,7 +18,6 @@ int main(int argc,char* argv[])
     height = imgs->height - model->height + 1;  
 	
 	IplImage* result = cvCreateImage(cvSize(width,height),32,1);
-	
 	CvPoint minLoc, maxLoc;
 	double minValue, maxValue;
 printf("start compare\n");
