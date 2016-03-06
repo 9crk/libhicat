@@ -11,7 +11,7 @@ int venc_getFrame(char* buffer,int *datalen);//get a h264 frame
 //mode=0:get Y  mode=1:get UV mode=2:get YUV
 //YUV420
 int venc_getYUV(int mode,char*buff);
-
+int venc_rotate(int dir);
 #ifdef __cplusplus 
 }
 #endif
