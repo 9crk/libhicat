@@ -10,7 +10,7 @@ int main(int argc,char* argv[])
 	int len;
 	IplImage* model = cvLoadImage(argv[1],0);
 	IplImage *img720 = cvCreateImageHeader(cvSize(1280,720), 8, 1);
-	IplImage *imgs = cvCreateImage(cvSize(320,240),8,1);
+	IplImage *imgs = cvCreateImage(cvSize(100,60),8,1);
 
     cvSetImageData(img720,data,1280);
 
@@ -30,7 +30,7 @@ printf("start compare\n");
 		cvMatchTemplate(imgs, model, result, CV_TM_SQDIFF);
 		//4.find high point
 		cvMinMaxLoc(result, &minValue, &maxValue, &minLoc, &maxLoc);    
-		cvRectangle(imgs,minLoc,cvPoint(minLoc.x+model->width,minLoc.y+model->height),cvScalar(255,255,255,0),8);
+		cvRectangle(imgs,minLoc,cvPoint(minLoc.x+model->width,minLoc.y+model->height),cvScalar(255,255,255,0),1);
 		cvSaveImage("hi.jpg",imgs);	
 		printf("x:%d y:%d\n",minLoc.x+model->width/2,minLoc.y+model->height/2);
 		usleep(1000);

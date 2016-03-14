@@ -3,7 +3,7 @@ function changesrc(){
     var pic=document.getElementById('change');
     var img='./hi.jpg?'+new Date;
     pic.src=img;
-    window.setTimeout(changesrc,1000);
+    window.setTimeout(changesrc,500);
 }
 window.onload=function(){
     changesrc();
