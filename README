@@ -57,6 +57,8 @@ setenv bootcmd 'sf probe 0;sf read 0x82000000 0x100000 0x300000;bootm 0x82000000
 #What's more
 	zwebs	https://9crk@bitbucket.org/zhouhua/hicat_zwebs.git
 
+#How to use programming with serial port on Hisiv
+	libSerial https://github.com/9crk/libSerial.git
 	
 
 
