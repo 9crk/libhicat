@@ -31,8 +31,13 @@ setenv bootcmd 'sf probe 0;sf read 0x82000000 0x100000 0x300000;bootm 0x82000000
 	then you can browser the result hi.jpg on http://192.168.1.1/mmc/opencv/app/hi.jpg
 
 #About rtspserver and libhisiv.a
-	rtspserver is modified from live555 project.
-	source code is in https://bitbucket.org/zhouhua/hicat_rtspserver
+	rtspserver have two demo:
+		one is modified from live555 project.[live555MediaServer]
+			source code is in https://bitbucket.org/zhouhua/hicat_rtspserver
+			play Address:[rtsp://192.168.1.1/hicat.264]
+		one is a http-rtp based program. with only binary file provided.[http-rtpServer]
+			play Address:[http://192.168.1.1/cgi-bin/video.sdp] but must with zwebs running first.
+		you can rename any of it as 'rtspserver',then it will be run in the next boot. or run /hicat/launch.sh restart to restart all services.
 	libhisiv.a contains all the camera function.as below:
 		extern int venc_exit(int n);//0 
 		extern int venc_init(int resolve);//0:720P 1:QVGA 2:VGA
