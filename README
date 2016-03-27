@@ -16,7 +16,7 @@
 	>>sf erase 0x400000 0xC00000
 	>>sf write 0x82000000 0x400000 0x500000
 	>>setenv bootargs 'mem=32M console=ttyAMA0,115200 root=/dev/mtdblock2 rootfstype=jffs2 mtdparts=hi_sfc:1M(boot),3M(kernel),12M(rootfs)'
-setenv bootcmd 'sf probe 0;sf read 0x82000000 0x100000 0x300000;bootm 0x82000000'	
+	>>setenv bootcmd 'sf probe 0;sf read 0x82000000 0x100000 0x300000;bootm 0x82000000'	
 	then reboot the board or execute 'reset' command.
 #How to use opencv Demo
 	clone this repo
