@@ -47,11 +47,16 @@
 		extern int venc_rotate(int dir);//0:no rotate 2:180 digree rotate.
 		extern int venc_getYUV(int mode,char*buff);//get YUV data.
 #How to install software pack
+[old way before 20160417]
 	unpack the hicat2016xxxx.tar
 	cp hicat2016xxxx /
 	cd /hicat
 	./launch.sh install
 	then the board will reboot.
+[new way for sd upgrade after 20160418]
+	1.execute 'lrz' command to send libhicat/opt/hi_sd.sh into the board[any where]
+    2.format the sd card with fat32 format in default param. or use mkfs.vfat on Linux OS
+	3.then execute 'chmod +x hi_sd.sh && ./hi_sd.sh',the board will reboot
 
 #How to upgrade
 	1.Formating the SD card with vfat or fat32 mode.
