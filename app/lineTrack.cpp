@@ -17,8 +17,8 @@ int main(int argc,char* argv[])
 	}
 	for(i=0;i<10;i++){
 		for(y=635;y<(635+10);y++){
-			for(x=i*72;x<(i+1)*72;i++){
-				result[i]+=data[y*1024+x];
+			for(x=i*72;x<(i+1)*72;x++){
+				result[i]+=data[y*1280+x];
 			}
 		}
 		result[i] = result[i]/(72*10);
