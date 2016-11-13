@@ -1,4 +1,6 @@
 #include<stdio.h>
+#include<signal.h>
+#include<stdlib.h>
 //for video
 extern int venc_exit(int n);
 extern int venc_init_more(int resolve,int mode,int fps);//resolve: 0/1/2  1280*720/320*240/640*480  mode: 0/1 H264/MJPEG
@@ -16,6 +18,11 @@ extern int libyuvdist_updateYuv(int iHandle,char* data,int len,int seq,unsigned 
 extern int libyuvdist_stopYuvDistService(int iHandle);
 extern int libyuvdist_setSettingCallback(int iHandle,int func);//int func(int resX,int resY,int fps)
 
+static int gSnap = 0;
+void do_snap()
+{
+	gSnap = 1;
+}
 int main(int argc,char* argv[])
 {
 #if 1
@@ -25,13 +32,24 @@ int main(int argc,char* argv[])
     FILE* fp_snap;
 	int hd = libyuvdist_startYuvDistService(8080);
     venc_init_more(1,1,12);
-    //fp = fopen("test.jpeg","wb");
+	signal(SIGUSR1, do_snap); 
+    //fp = fopen("snap.jpeg","wb");
     cnt = 0;
     while(1){
         ret = venc_getFrame(data, &len,&pts,&type);
         if(ret>0){
 			libyuvdist_updateYuv(hd,data,len,0,0);
 			//if(cnt == 50){fwrite(data,len,1,fp);break;}
+			if(gSnap){
+				struct  timeval    tv;
+				char buf[100];
+				gSnap = 0;
+				gettimeofday(&tv,NULL);
+				sprintf(buf,"snap%d-%d.jpg",tv.tv_sec,tv.tv_usec);
+   				fp_snap = fopen(buf,"wb");
+				fwrite(data,len,1,fp_snap);
+				fclose(fp_snap);
+			}
         	cnt++;
         	printf("len = %d pts=%d type=%d\n",len,pts,type);
 		}
