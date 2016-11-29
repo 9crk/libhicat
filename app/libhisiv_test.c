@@ -55,7 +55,12 @@ int main(int argc,char* argv[])
     char data[1000000];
     FILE* fp;
 	int fps = 25;	
+	int rotate = 0;
 	int resolution = 0;
+	if(argc==1){
+		printf("Usage:%s resolve[0/1/2] rotate[0/2] fps[1-25]\n");
+		return;
+	}
 	int hd = libyuvdist_startYuvDistService(8080);
 	if(argc > 1){
 		resolution = atoi(argv[1]);
@@ -63,12 +68,17 @@ int main(int argc,char* argv[])
 		printf("resolution = %d\n",resolution);
 	}
 	if(argc > 2){
-		fps = atoi(argv[2]);
+		rotate = atoi(argv[2]);
+		printf("rotate = %d\n",rotate);
+		if(rotate<0 || rotate>3)rotate=0;
+	}	
+	if(argc > 3){
+		fps = atoi(argv[3]);
 		printf("fps = %d\n",fps);
 		if(fps<0 || fps>25)fps=25;
 	}
     venc_init_more(resolution,1,fps);
-	
+	venc_rotate(rotate);	
 	pthread_t pid;
 	pthread_create(&pid,NULL,snapService,NULL);
     cnt = 0;
