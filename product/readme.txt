@@ -2,9 +2,9 @@
 	a.flash uboot+uImage+rootfs
 	 you can use loadb or loady command under uboot.
 	 or use an SPI programmer to flash them
-	 0-1M  uboot   size:1M
-     1-5M  uImage  size:4M
-	 5-16M rootfs  size:11M
+	 0-1M  uboot   size:1M	 u-boot-3BytesMode.bin
+     1-5M  uImage  size:4M	 uImage
+	 5-16M rootfs  size:11M	 z_rootfs_uclibc_64k.jffs2
 	
 	b.uboot param:
 	 setenv bootargs 'mem=32M console=ttyAMA0,115200 root=/dev/mtdblock2 rootfstype=jffs2 mtdparts=hi_sfc:1M(boot),4M(kernel),11M(rootfs)'
@@ -51,4 +51,17 @@
 
 	i.how to use OpenCV
 		checkout the libhicat/APP/
-		
+	
+	j.files:
+		libhicat/opt/
+			hicat_failsafe.tar
+				if you scrwed up your system. copy this file to sd card
+				./launch.sh sd mount
+				then press the button for > 10 seconds.it will restore to the factory statu.
+			hicatEx.tar
+				there is some apps and libraries in it.
+			nodejs_hicat.tar
+				nodejs binaries
+			curlxxxxx.tar
+				curl binaries
+						
