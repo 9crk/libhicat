@@ -2,7 +2,7 @@
 * linux
 * file system 
 * Hisiv stuff
-* download address: http://pan.baidu.com/s/1c1qOQ6O  verifycode: kspc  unrar password: lk87612umzvcb01qqsalv
+* download address: http://pan.baidu.com/s/1c1qOQ6O  verifycode: kspc   password: lk87612umzvcb01qqsalv
  
 #How to burn the firmware to flash
 
