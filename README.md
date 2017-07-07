@@ -3,6 +3,7 @@
 * file system 
 * Hisiv stuff
 * download address: http://pan.baidu.com/s/1c1qOQ6O  verifycode: kspc   password: lk87612umzvcb01qqsalv
+https://drive.google.com/open?id=0B9zFmn9EJ1owaEhqdHZRTWx6TGs
  
 #How to burn the firmware to flash
 
